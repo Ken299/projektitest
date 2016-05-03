@@ -3,25 +3,36 @@
 <head>
   <title>Test</title>
   <meta charset="utf-8">
-  <link rel="stylesheet" href="jes.css">
-  <script type="text/javascript" src="jes.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="jes.css">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="jes.js"></script>
 
 </head>
 <body>
 <div class="page-header">
   <h1>TEST</h1>
+  <p name="alertEvent" id="alertEvent"></p>
 </div>
+<div id="ringo">
+	<div class="data">
+		<h1>Andmed</h1>
+			<ul>
+				<li><p id="wood"></p></li>
+				<li><p id="materials"></p></li>
+				<li><p id="roomForWood"></p></li>
+				<li><p id="axe"></p></li>
+			<ul>
+	</div>
 <div class="container-fluid">
   <div class="container">
   <h2>Navigeerimine</h2>
   <ul class="nav nav-tabs">
-    <li class="active"><a data-toggle="tab" href="#home">Kodu</a></li>
+    <li class="active"><a data-toggle="tab" href="#home" onclick="clearEventAlert();">Kodu</a></li>
     <li><a data-toggle="tab" href="#menu1">Kuur</a></li>
-    <li><a id="tab2" data-toggle="tab" href="#menu2" style="display: none;">Töökoda</a></li>
+    <li><a id="tab2" data-toggle="tab" href="#menu2" style="display: none;" onclick="clearEventAlert();">Töökoda</a></li>
     <li><a data-toggle="tab" href="#menu3" style="display: none;">Valik 3</a></li>
   </ul>
 
@@ -32,7 +43,7 @@
 		<button id="ahi" type="button" class="btn btn-success">Tee süüa</button>
     </div>
     <div id="menu1" class="tab-pane fade">
-      <h3>Kuur</h3>
+      <h3 id="gSize"></h3>
 	  <button id="puu" type="button" class="btn btn-success">Lõhu puid</button>
 	  <input type="button" value="Valmista materjali (3 puitu)"id="craftMaterial" type="button" class="btn btn-success"></input>
 	  <input type="button" value="Suurenda kuuri (10 materjali)" id="buildGarageButton" type="button" class="btn btn-success" disabled></input>
@@ -49,9 +60,12 @@
       <h3>Valik 3</h3>
       <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
     </div>
+	<div id="alert">
+		<p name="alert" id="alert"></p>
+	</div>
   </div>
 </div>
-
+</div>
 
 </body>
 </html>

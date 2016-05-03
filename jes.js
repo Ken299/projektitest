@@ -10,6 +10,9 @@ var workShop = 0;
 var axe = 0;
 var woodGain = 0;
 var axes = ["Puidust", "Kivist", "Rauast", "Metallist", "Hõbedast", "Kullast", "Teemantist", "Jänesest"];
+var heat = 50;
+var heatLevels = ["Väga külm", "Jahe", "Paras", "Soe", "Palav"];
+var lowerHeatTime = 45 * 1000;
 window.onload = function(){
 	document.getElementById('puu').addEventListener('click', addWood);
 	document.getElementById('buildGarageButton').addEventListener('click', buildGarage);
@@ -21,8 +24,30 @@ window.onload = function(){
 	document.getElementById("materials").innerHTML = "Materjale: "+materials;
 	document.getElementById("roomForWood").innerHTML = "Kuuri mahutavus: "+roomForWood+" ühikut";
 	document.getElementById("axe").innerHTML = "Kirves: "+axes[axe];
+	document.getElementById('heat').addEventListener('click', heatRoom);
+	document.getElementById('roomHeat').innerHTML = "Toasoojus: Paras";
+	setInterval(lowerHeat, lowerHeatTime);
+	document.getElementById('buildBarnButton').addEventListener('click', buildBarnConfirm);
+	
 	
 	//btn.onClick = addWood();
+}
+function buildBarnConfirm(){
+	bootbox.confirm({ 
+    size: 'small',
+    message: "Oled kindel, et soovid lauda ehitada?\n\n <strong>100 puitu ja 75 materjali</strong>", 
+    callback: function(result){
+		if(result === true){
+			if(wood <= 99 || materials <= 74){
+				bootbox.alert("Sul ei ole piisavalt vahendeid!")
+			}else{
+				buildBarn();
+			}
+		}else{
+			console.log("Tsau")
+		}
+	}
+	});
 }
 function addWood(){
 	if(wood >= roomForWood){
@@ -58,8 +83,8 @@ function addWood(){
 	}
 	if(clicksOnWoodButton === 10){
 		axe = axe+1;
-		document.getElementById("buildAe").style = "display: inline;";
-		document.getElementById("buildAe").disabled = false;
+		document.getElementById("buildBarnButton").style = "display: inline;";
+		document.getElementById("buildBarnButton").disabled = false;
 		document.getElementById("alertEvent").innerHTML ="Leidsid "+"<strong>"+"kirve";
 		document.getElementById("axe").innerHTML = "Kirves: "+axes[axe];
 		setTimeout(clearEventAlert, 3000);
@@ -82,14 +107,18 @@ function addMaterials(){
 	}
 }
 function buildGarage(){
-	materials = materials - garageCost;
-	document.getElementById("materials").innerHTML = "Materjale: "+materials;
-	garage = garage + 1;
-	roomForWood = roomForWood + 30 * garage;
-	garageCost = garage * 10 + garageCost
-	console.log(garage)
-	document.getElementById("gSize").innerHTML = "Kuur ("+garage+")";
-	document.getElementById("roomForWood").innerHTML = "Kuuri mahutavus: "+roomForWood;
+	if(materials < garageCost){	
+		document.getElementById("alert").innerHTML = "Sul ei ole kuuri suurendamiseks piisavalt materjale!";
+	}else{
+		materials = materials - garageCost;
+		document.getElementById("materials").innerHTML = "Materjale: "+materials;
+		garage = garage + 1;
+		roomForWood = roomForWood + 30 * garage;
+		garageCost = garage * 10 + garageCost
+		console.log(garage)
+		document.getElementById("gSize").innerHTML = "Kuur ("+garage+")";
+		document.getElementById("roomForWood").innerHTML = "Kuuri mahutavus: "+roomForWood;
+	}
 	if(materials < garageCost){
 		
 		document.getElementById("buildGarageButton").disabled = true;
@@ -106,6 +135,7 @@ function buildGarage(){
 		document.getElementById("buildWorkShop").disabled = false;
 	}
 }
+
 function buildWorkShop(){
 	if(wood < 10){
 		document.getElementById("alert").innerHTML = "Sul ei ole töökoja ehitamiseks piisavalt puitu!";
@@ -118,10 +148,55 @@ function buildWorkShop(){
 	document.getElementById("wood").innerHTML = "Puitu: "+wood;
 	}
 }
+function buildBarn(){
+	wood = wood - 100;
+	materials = materials - 75;
+	document.getElementById("buildBarnButton").style = "display: none;";
+	document.getElementById("tab3").style = "display: ";
+	document.getElementById("materials").innerHTML = "Materjale: "+materials;
+	document.getElementById("wood").innerHTML = "Puitu: "+wood;
+	if(materials >= garageCost){
+		
+		document.getElementById("buildGarageButton").disabled = false;
+	}
+}
+function lowerHeat(){
+	var heatLevel;
+	if(heat >=90){
+		heatLevel = heatLevels[4];
+	}else if(heat >=70){
+		heatLevel = heatLevels[3];
+	}else if(heat >= 50){
+		heatLevel = heatLevels[2];
+	}else if(heat >=30){
+		heatLevel = heatLevels[1];
+	}else{
+		heatLevel = heatLevels[0];
+	}
+	if(heat > 0){
+	heat = heat - 10;
+	document.getElementById('roomHeat').innerHTML = "Toasoojus: "+heatLevel;
+	}
+}
+
+function heatRoom(){
+	
+	if(heat >=91){
+		document.getElementById("alert").innerHTML = "Ahju ei tasuks üle kütta!";
+	}else if(wood <= 2){
+		document.getElementById("alert").innerHTML = "Sul ei ole piisavalt küttepuid! (3)";
+	}else{
+		wood = wood - 3;
+		heat = heat + 10;
+		document.getElementById("wood").innerHTML = "Puitu: "+wood;
+	}
+}
+
 function randomInt(min, max) {
 	
 	return Math.floor(Math.random() * (max - min)) + min;
 }
+
 function clearEventAlert(){
 	document.getElementById("alertEvent").innerHTML ="";
 	document.getElementById("alert").innerHTML ="";

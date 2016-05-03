@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Test</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="jes.css">
+  <script type="text/javascript" src="jes.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+<div class="page-header">
+  <h1>TEST</h1>
+</div>
+<div class="container-fluid">
+  <div class="container">
+  <h2>Navigeerimine</h2>
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#home">Kodu</a></li>
+    <li><a data-toggle="tab" href="#menu1">Kuur</a></li>
+    <li><a id="tab2" data-toggle="tab" href="#menu2" style="display: none;">Töökoda</a></li>
+    <li><a data-toggle="tab" href="#menu3" style="display: none;">Valik 3</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div id="home" class="tab-pane fade in active">
+      <h3>Kodu</h3>
+		<button id="kamin" type="button" class="btn btn-success">Küta kaminat</button>
+		<button id="ahi" type="button" class="btn btn-success">Tee süüa</button>
+    </div>
+    <div id="menu1" class="tab-pane fade">
+      <h3>Kuur</h3>
+	  <button id="puu" type="button" class="btn btn-success">Lõhu puid</button>
+	  <input type="button" value="Valmista materjali (3 puitu)"id="craftMaterial" type="button" class="btn btn-success"></input>
+	  <input type="button" value="Suurenda kuuri (10 materjali)" id="buildGarageButton" type="button" class="btn btn-success" disabled></input>
+	  <input type="button" value="Ehita töökoda (10 puitu)" id="buildWorkShop" type="button" style="display: none;" class="btn btn-success" disabled></input>
+	  <input type="button" value="Ehita ae" id="buildAe" type="button" style="display: none;" class="btn btn-success" disabled></input>
+	  <p name="puitu" id="wood"></p>
+	  <p name="materjale" id="materials"></p>
+    </div>
+    <div id="menu2" class="tab-pane fade">
+      <h3>Valik 2</h3>
+      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+    </div>
+    <div id="menu3" class="tab-pane fade">
+      <h3>Valik 3</h3>
+      <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+    </div>
+  </div>
+</div>
+
+
+</body>
+</html>

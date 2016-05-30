@@ -5,7 +5,7 @@
 	//kontrollin, kas kasutaja on sisseloginud
 	if(isset($_SESSION["id_from_db"])){
 		// kui on,suunan data lehele
-		header("Location: jes.html");
+		header("Location: game.php");
 		exit();
 	}
 	//muutujad errorite jaoks
@@ -67,7 +67,7 @@
 				if(isset($login_response->success)){
 					//läks edukalt, peab sessiooni salvestama
 					$_SESSION["id_from_db"] = $login_response->success->user->id;
-					header("Location:jes.html");
+					header("Location:game.php");
 					//lõpetame php laadimise
 					exit();
 				}

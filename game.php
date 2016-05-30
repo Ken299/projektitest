@@ -3,9 +3,9 @@
 	require_once("functions.php");
 
 	//kontrollin, kas kasutaja on sisseloginud
-	if(isset($_SESSION["id_from_db"])){
+	if(!isset($_SESSION["id_from_db"])){
 		// kui on,suunan data lehele
-		header("Location: login.html");
+		header("Location: login.php");
 		exit();
 	}
 ?>
@@ -15,20 +15,20 @@
   <title>Test</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="jes.css">
+  <link rel="stylesheet" href="game.css">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="jes.js"></script>
+  <script type="text/javascript" src="game.js"></script>
   <script src="bootbox.min.js"></script>
 
 </head>
 <body>
 <div class="page-header">
   <p name="alertEvent" id="alertEvent"></p>
-  <li class="menu-item"><a href="logout.php" class="menu-link">Logout</a></li>
+  <li class="menu-item"><a href="logout.php" class="menu-link">Logi välja</a></li>
 </div>
-<div id="ringo">
+<div id="data">
 	<div class="data">
 		<h1>Andmed</h1>
 			<ul>
@@ -44,11 +44,11 @@
   
   <ul class="nav nav-tabs">
     <li class="active"><a data-toggle="tab" href="#home" onclick="clearEventAlert()";>Kodu</a></li>
-    <li><a data-toggle="tab" href="#menu1">Kuur</a></li>
+    <li><a data-toggle="tab" href="#menu1" onclick="clearEventAlert()";>Kuur</a></li>
     <li><a id="tab2" data-toggle="tab" href="#menu2" style="display: none;" onclick="clearEventAlert()">Töökoda</a></li>
     <li><a id="tab3" data-toggle="tab" href="#menu3" style="display: none;" onclick="clearEventAlert()">Laut</a></li>
+	<br><br><br><img src="img/stage1.png" id ="yourHome" alt="My home">
   </ul>
-
   <div class="tab-content">
     <div id="home" class="tab-pane fade in active">
       <h3>Kodu</h3>

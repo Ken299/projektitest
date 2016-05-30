@@ -6,30 +6,30 @@ Projekti eesmärk on luua üks huvitav brauseripõhine tekstimäng, milles oleks
 
 ## Funktsionaalsuse loetelu
 
-v0.0.1 
+1. v0.0.1 
  * Bootstrap ja algne kujundus
  * Saab teha puitu ja suurendada kuuri
  * Juhuslik sündmus
-v0.0.2
+1. v0.0.2
  * Muutuvad teadaanded
  * Menüü
  * Töökoja ehitamine
  * veidi CSS
- v0.0.3
+1. v0.0.3
   * Toa kütmine
   * Saab ehitada lauta
   * Mõned parandused seoses nuppudega
-v0.0.4
+1. v0.0.4
  * Registreerimise ja sisselogimise süsteem
-v0.0.5
+1. v0.0.5
  * Logimise süsteemi parandamine
  * Failinimede ümbermuutmine
  * Lisasin pilte
-v0.0.6
+1. v0.0.6
  * Lisatud kaevandus
  * Saab korjata kive
  * Saab otsida rauda
-v0.0.7
+1. v0.0.7
  * Saab kirvest täiustada ühe korra
  * Parandasin teateid
  * Peamisel teatel uus tekst

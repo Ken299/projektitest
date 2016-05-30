@@ -25,8 +25,8 @@
 </head>
 <body>
 <div class="page-header">
-  <p name="alertEvent" id="alertEvent"></p>
   <li class="menu-item"><a href="logout.php" class="menu-link">Logi välja</a></li>
+  <input type="button" value="Testimiseks" id="matswood" type="button" class="btn btn-success"></input>
 </div>
 <div id="data">
 	<div class="data">
@@ -37,6 +37,9 @@
 				<li><p id="roomForWood"></p></li>
 				<li><p id="axe"></p></li>
 				<li><p id="roomHeat"></p></li>
+				<li id="rocks" style="display: none;"><p id="rocks"></p></li>
+				<li id="iron" style="display: none;"><p id="iron"></p></li>
+				<li><p id="health"></p></li>
 			<ul>
 	</div>
 <div class="container-fluid">
@@ -47,13 +50,14 @@
     <li><a data-toggle="tab" href="#menu1" onclick="clearEventAlert()";>Kuur</a></li>
     <li><a id="tab2" data-toggle="tab" href="#menu2" style="display: none;" onclick="clearEventAlert()">Töökoda</a></li>
     <li><a id="tab3" data-toggle="tab" href="#menu3" style="display: none;" onclick="clearEventAlert()">Laut</a></li>
+	<li><a id="tab4" data-toggle="tab" href="#menu4" style="display: none;" onclick="clearEventAlert()">Kaevandus</a></li>
 	<br><br><br><img src="img/stage1.png" id ="yourHome" alt="My home">
   </ul>
   <div class="tab-content">
     <div id="home" class="tab-pane fade in active">
       <h3>Kodu</h3>
 		<button id="heat" type="button" class="btn btn-success">Küta kaminat</button>
-		<button id="ahi" type="button" class="btn btn-success">Tee süüa</button>
+		<button id="ahi" type="button" class="btn btn-success" disabled>Tee süüa</button>
     </div>
     <div id="menu1" class="tab-pane fade">
       <h3 id="gSize"></h3>
@@ -64,21 +68,23 @@
 	  <input type="button" value="Ehita laut" id="buildBarnButton" type="button" style="display: none;" class="btn btn-success" disabled></input>
     </div>
     <div id="menu2" class="tab-pane fade">
-      <h3>Valik 2</h3>
-      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+      <h3>Töökoda</h3>
+      <p>Siin asub sinu töökoda.</p>
+	  <input type="button" value="Täiusta kirvest"id="upgradeAxe" type="button" class="btn btn-success"></input>
     </div>
     <div id="menu3" class="tab-pane fade">
-      <h3>Valik 3</h3>
-      <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+      <h3>Laut</h3>
+      <p>Siin asub sinu laut.</p>
+    </div>
+	<div id="menu4" class="tab-pane fade">
+      <h3>Kaevandus</h3>
+      <p>Pime kaevandus</p>
+	  <button id="gatherRock" type="button" class="btn btn-success">Korja kive</button>
+	  <button id="searchIron" type="button" class="btn btn-success">Otsi rauda</button>
     </div>
 	<div id="alert">
 		<p name="alert" id="alert"></p>
 	</div>
-	<!--<div class="alert alert-success" id="twoMoreTrees">
-    <button type="button" class="close" data-dismiss="alert">x</button>
-    <strong>Success! </strong>
-    Said 2 halgu rohkem.
-</div>!-->
   </div>
 </div>
 </div>
